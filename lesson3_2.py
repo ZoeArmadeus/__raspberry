@@ -1,13 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
 from gpiozero import LED
+import datasource
 #import pprint
 
 class Window(tk.Tk):    
-    def __init__(self):
-        
-        
+    def __init__(self,redLed):
+        '''
+        @parmater redLed,是gpiozeor.LED的實體
+        '''
         super().__init__()
+        self.redLed = redLed
         self.state = False
         self.title('這是我的第一個視窗')
         self.resizable(False, False)
@@ -45,6 +48,7 @@ class Window(tk.Tk):
             led.off()
 
 if __name__ == "__main__":
+    datasource.sayHello()
     led = LED(23)
     led.off()
     window = Window()   
